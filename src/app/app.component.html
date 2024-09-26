@@ -182,8 +182,8 @@
    <div class="articlePokeContainer">
     @for(article of articles;track $index){
       @if(article.isPublished){
-        <div class="article" >
-            <h1 [ngClass]="{'UltraLiked':article.likes > 100 }">{{article.title}}</h1>
+        <div class="article" [ngClass]="{'UltraLiked':article.likes > 100 }">
+            <h1 [ngStyle]="{'color': article.likes > 100 ? 'red':'black'}">{{article.title}}</h1>
             <img [src]="article.image" alt="pokémon">
             <p>{{article.content}}</p>
             <p>{{article.author}}</p>
