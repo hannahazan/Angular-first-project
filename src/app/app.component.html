@@ -176,35 +176,8 @@
   }
 </style>
 
-<main class="main">
-  <div class="content">
-   <app-article></app-article>
-   <div class="articlePokeContainer">
-    @for(article of articles;track $index){
-      @if(article.isPublished){
-        <div class="article" >
-            <h1 [ngClass]="{'UltraLiked':article.likes > 100 }">{{article.title}}</h1>
-            <img [src]="article.image" alt="pokémon">
-            <p>{{article.content}}</p>
-            <p>{{article.author}}</p>
-        </div>
-      }
-      @else{
-        <p>Ce pokémon a été choisis par Sasha</p>
-      }    
-    }
-
-   </div>
-  </div>
-</main>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<router-outlet></router-outlet>
+   
 
 
-<router-outlet />
+

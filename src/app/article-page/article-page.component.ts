@@ -1,20 +1,39 @@
-import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms'
-import { CommonModule } from '@angular/common'
+import { Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { ParamMap } from '@angular/router';
+import { Inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+interface Article{
+  id:number;
+  title:string;
+  author:string,
+  content:string;
+  image:string;
+  isPublished:boolean;
+  comment:string;
+}
 
 @Component({
-  selector: 'app-article',
+  selector: 'app-article-page',
   standalone: true,
-  imports: [FormsModule,CommonModule],
-  templateUrl: './article.component.html',
-  styleUrl: './article.component.scss'
+  imports: [CommonModule],
+  templateUrl: './article-page.component.html',
+  styleUrl: './article-page.component.css'
 })
-export class ArticleComponent {
-  Titre:string="3 types d’articles de blog : pour ne plus jamais être à court d’idées !"
-  
-  
+export class ArticlePageComponent {
+  route: ActivatedRoute = inject(ActivatedRoute);
+  articleId!: number;
 
-  article={
+  ngOnInit() {
+    this.route.paramMap.subscribe((params: ParamMap) => {
+      this.articleId = Number(params.get('id'));
+      console.log(this.articleId)
+    });
+  }
+
+  articles: Article[]=[
+    {
     id:1,
     title:"1. Article de blog comparatif",
     author:"Karen karen",
@@ -22,8 +41,8 @@ export class ArticleComponent {
     image:"assets/images/blog.jpg",
     isPublished:true,
     comment:""
-  }
-  article2={
+  },
+  {
     id:2,
     title:"2. Article test ou retour d’expérience",
     author:"Karen claudine",
@@ -31,8 +50,8 @@ export class ArticleComponent {
     image:"assets/images/blog2.jpg",
     isPublished:true,
     comment:""
-  }
-  article3={
+  },
+  {
     id:3,
     title:"3. Article de blog tutoriel",
     author:"Karen catherine",
@@ -41,38 +60,5 @@ export class ArticleComponent {
     isPublished:true,
     comment:""
   }
-
-  togglePublication(articleNum:number): void {
-    console.log(this.article.isPublished)
-    if(articleNum===2){
-      console.log(articleNum)
-      if(this.article2.isPublished==true){ 
-        this.article2.isPublished = false;
-        console.log(this.article2.isPublished + "dans le if 2")
-      }
-      else{
-        this.article2.isPublished = true;
-      }
-      
-    }
-    else if(articleNum===3){
-      if(this.article3.isPublished==true){
-        this.article3.isPublished = false;
-      }
-      else{
-        this.article3.isPublished = true;
-      }
-      
-    }
-    else{
-      if(this.article.isPublished==true){
-        this.article.isPublished = false;
-      }
-      else 
-      {this.article.isPublished = true;
-      }
-    }
-      
-  }
-  
+]
 }
