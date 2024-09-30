@@ -1,0 +1,5 @@
+<div>
+    @for(art of articleArray;track $index ){
+        <p [routerLink]="['/article',art.Id]">{{art.Title}}</p>
+    }
+</div>
