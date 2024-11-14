@@ -8,8 +8,13 @@
       alt="Image de l'article"
       class="article-thumbnail__image"
     />
+   
   </div>
   <div class="article-thumbnail__content">
+    <div class="containerImgLike">
+        <p class="article-thumbnail__like-count">{{ article.likeCount }} like</p>
+        <span class="article-thumbnail__like" (click)="sendNotification()">{{article.isLiked ? "♥" : "♡"}}</span>
+    </div>
     <a [routerLink]= "['article',article.id]">
       <h2 class="article-thumbnail__title">{{ article.title }}</h2>
     </a>

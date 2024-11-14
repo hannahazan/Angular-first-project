@@ -6,4 +6,6 @@ export interface Article{
     image:string;
     isPublished:boolean;
     comment:string;
+    likeCount: number;
+    isLiked:boolean
   }
