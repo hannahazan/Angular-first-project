@@ -3,21 +3,15 @@ import { ActivatedRoute } from '@angular/router';
 import { ParamMap } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { inject } from '@angular/core';
+import { ArticleThumbnailComponent } from '../article-thumbnail/article-thumbnail.component';
+import { Article } from '../../models/article';
 
-interface Article{
-  id:number;
-  title:string;
-  author:string,
-  content:string;
-  image:string;
-  isPublished:boolean;
-  comment:string;
-}
+
 
 @Component({
   selector: 'app-article',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,ArticleThumbnailComponent],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss'
 })
@@ -25,15 +19,14 @@ export class ArticleComponent {
 
   route: ActivatedRoute = inject(ActivatedRoute);
   articleId!: number;
-
   ngOnInit() {
-
     this.route.paramMap.subscribe((params: ParamMap) => {
       console.log("hello")
       this.articleId = Number(params.get('id'));
       console.log(this.articleId)
     });
   }
+  
   articles: Article[]=[
     {
       id:1,
