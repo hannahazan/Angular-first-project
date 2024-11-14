@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ArticleListComponent } from '../../component/article-list/article-list.component';
 
 interface ArticleList{
   Id:number;
@@ -10,7 +11,7 @@ interface ArticleList{
 @Component({
   selector: 'app-home-page',
   standalone: true,
-  imports: [CommonModule,RouterLink],
+  imports: [CommonModule,RouterLink,ArticleListComponent],
   templateUrl: './home-page.component.html',
   styleUrl: './home-page.component.css'
 })

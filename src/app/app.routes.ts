@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { HomePageComponent } from './component/home-page/home-page.component';
+import { HomePageComponent } from './page/home-page/home-page.component';
 import { ArticlePageComponent } from './page/article-page/article-page.component';
 import { NotFoundComponent } from './page/not-found/not-found.component';
 import { ContactFormComponent } from './component/contact-form/contact-form.component';

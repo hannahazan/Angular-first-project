@@ -1,0 +1,17 @@
+<div
+  class="article-thumbnail"
+  ngClass="{ 'popular-article': article.likeCount > 200 }"
+>
+  <div class="article-thumbnail__image-container">
+    <img
+      [src]="article.image"
+      alt="Image de l'article"
+      class="article-thumbnail__image"
+    />
+  </div>
+  <div class="article-thumbnail__content">
+    <a [routerLink]= "['article',article.id]">
+      <h2 class="article-thumbnail__title">{{ article.title }}</h2>
+    </a>
+  </div>
+</div>

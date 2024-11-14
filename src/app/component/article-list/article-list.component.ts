@@ -1,32 +1,27 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ParamMap } from '@angular/router';
-import { CommonModule } from '@angular/common';
-import { inject } from '@angular/core';
 import { ArticleThumbnailComponent } from '../article-thumbnail/article-thumbnail.component';
-import { Article } from '../../models/article';
+import { CommonModule } from '@angular/common';
 
 
+interface Article{
+  id:number;
+  title:string;
+  author:string,
+  content:string;
+  image:string;
+  isPublished:boolean;
+  comment:string;
+}
 
 @Component({
-  selector: 'app-article',
+  selector: 'app-article-list',
   standalone: true,
-  imports: [CommonModule,ArticleThumbnailComponent],
-  templateUrl: './article.component.html',
-  styleUrl: './article.component.scss'
+  imports: [CommonModule, ArticleThumbnailComponent],
+  templateUrl: './article-list.component.html',
+  styleUrl: './article-list.component.css'
 })
-export class ArticleComponent {
 
-  route: ActivatedRoute = inject(ActivatedRoute);
-  articleId!: number;
-  ngOnInit() {
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      console.log("hello")
-      this.articleId = Number(params.get('id'));
-      console.log(this.articleId)
-    });
-  }
-  
+export class ArticleListComponent {
   articles: Article[]=[
     {
       id:1,
@@ -56,4 +51,5 @@ export class ArticleComponent {
       comment:""
     }
   ]
+
 }
