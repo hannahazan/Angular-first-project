@@ -1,9 +1,2 @@
-<div>
-    @for(art of articles; track $index){
-        @if(articleId==art.id){
-            <h1>{{art.title}}</h1>
-            <img [src]="art.image" alt="">
-            <p>{{art.content}}</p>
-        }
-    }
-</div>
+<app-article></app-article>
+
