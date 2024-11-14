@@ -6,7 +6,7 @@ import { ArticlePageComponent } from './page/article-page/article-page.component
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet,CommonModule,ArticlePageComponent],
+  imports: [RouterOutlet,CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

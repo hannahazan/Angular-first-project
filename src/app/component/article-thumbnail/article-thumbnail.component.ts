@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Input } from '@angular/core';
+import { Input,Output,EventEmitter } from '@angular/core';
 import { Article } from '../../models/article';
 import { RouterLink } from '@angular/router';
  
@@ -12,4 +12,9 @@ import { RouterLink } from '@angular/router';
 })
 export class ArticleThumbnailComponent {
  @Input() article: Article = new Input();
+ @Output() notifyLike:EventEmitter<Article> = new EventEmitter();
+
+ sendNotification() {
+   this.notifyLike.emit(this.article);
+ }
 }

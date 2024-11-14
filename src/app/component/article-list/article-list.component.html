@@ -2,7 +2,7 @@
 <div class="main-container">
   @for (article of articles;track article.id) {
     @if (article.isPublished) {
-  <app-article-thumbnail [article]="article"></app-article-thumbnail>
+  <app-article-thumbnail [article]="article" (notifyLike)="handleLike(article)"></app-article-thumbnail>
     }
   } @empty {
   <p>Aucun article publié pour le moment</p>
