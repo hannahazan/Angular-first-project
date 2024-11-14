@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ParamMap } from '@angular/router';
-import { Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 interface Article{
