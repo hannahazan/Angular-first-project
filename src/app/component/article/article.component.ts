@@ -4,7 +4,7 @@ import { ParamMap } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { inject } from '@angular/core';
 import { Article } from '../../models/article';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../../services/api.service';
 
 
 
@@ -18,16 +18,14 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ArticleComponent {
 
-  http = inject(HttpClient)
+  articleService = inject(ApiService)
   route: ActivatedRoute = inject(ActivatedRoute);
   articleId!: number;
   articles!:Article
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
-      this.articleId = Number(params.get('id'));
-      this.http.get<Article>(`http://localhost:3000/articles/${Number(params.get('id'))}`).subscribe(response => {
-        this.articles = response;
-      });
+    this.articleId = Number(params.get('id'));
+    this.articleService.getArticleById(Number(params.get('id'))).subscribe((response)=>this.articles=response)
     });
 
   }

@@ -3,7 +3,7 @@ import { ArticleThumbnailComponent } from '../article-thumbnail/article-thumbnai
 import { CommonModule } from '@angular/common';
 import { Article } from '../../models/article';
 import { inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiService } from '../../services/api.service';
 
 
 
@@ -16,13 +16,10 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class ArticleListComponent {
-  http = inject(HttpClient)
+ articleService= inject(ApiService)
   articles:Article[]=[]
   ngOnInit() {
-    this.http.get<Article[]>('http://localhost:3000/articles').subscribe(response => {
-      this.articles = response;
-      console.log(this.articles,"hello")
-    });
+    this.articleService.getArticle().subscribe((response)=>this.articles=response)
   }
   
   handleLike(article: Article) {
